@@ -1,0 +1,6 @@
+{
+  "preset": "google",
+  "disallowTrailingWhitespace": true,
+  "validateIndentation": 2,
+  "excludeFiles": ["node_modules/**", "bower_componets/**", "assets/!(vendor|dependencies)", ".tmp", "*.ejs"]
+}

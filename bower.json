@@ -1,0 +1,26 @@
+{
+  "appPath": "assets",
+  "name": "voting",
+  "moduleName": "voteApp",
+  "version": "0.0.0",
+  "homepage": "Settings",
+  "authors": [
+    "Jaime Leonardo Suncin Cruz <jaime.suncin@kadevjo.com>"
+  ],
+  "description": "A basic voting application with Sails.js + Angular",
+  "keywords": [
+    "vote",
+    "sails.js",
+    "angular",
+    "example"
+  ],
+  "license": "GPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

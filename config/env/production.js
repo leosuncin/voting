@@ -33,6 +33,14 @@ module.exports = {
 
   // log: {
   //   level: "silent"
-  // }
+  // },
+
+  /***************************************************************************
+   * Disable autoreload on production                                        *
+   ***************************************************************************/
+  autoreload: {
+    active: false,
+    usePolling: false
+  }
 
 };

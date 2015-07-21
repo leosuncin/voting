@@ -6,6 +6,6 @@
  */
 
 module.exports = {
-	
+  // Nothing to do here
+  // Sails make magic here
 };
-

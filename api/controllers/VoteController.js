@@ -15,16 +15,21 @@ module.exports = {
 	vote: function (req, res) {
     var postId = actionUtil.requirePk(req);
     var action = req.param('action');
+    var ip     = req.ip;
 
     Post.findOne({id: postId}).then(function(post){
       if (!post) {
         return res.notFound({message: 'Not found post for the given id: ' + postId});
       }
-      return Vote.findOne({ip: req.isSocket ? req.socket.handshake.address : req.ip, post: post.id}).then(function(vote) {
+      if (req.isSocket) {
+        Post.subscribe(req.socket, post);
+        ip = req.socket.handshake.address;
+      }
+      return Vote.findOne({ip: ip, post: post.id}).then(function(vote) {
         if (vote) {
           return res.ok(post);
         } else {
-          return Vote.create({ip: req.isSocket ? req.socket.handshake.address : req.ip, post: post.id}).then(function(vote) {
+          return Vote.create({ip: ip, post: post.id}).then(function(vote) {
             if (action === 'positive') {
               post.positive = post.positive + 1;
             }

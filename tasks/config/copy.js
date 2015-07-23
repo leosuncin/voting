@@ -16,6 +16,16 @@
 module.exports = function(grunt) {
 
   grunt.config.set('copy', {
+    fonts: {
+      files: [{
+        expand: true,
+        flatten: true,
+        filter: 'isFile',
+        cwd: 'assets',
+        src: ['{fonts,vendor}/**/*.{eot,svg,ttf,woff,woff2}'],
+        dest: '.tmp/public/fonts'
+      }]
+    },
     views: {
       files: [{
         expand: true,

@@ -7,11 +7,14 @@
  * (Note that you can take advantage of Grunt-style wildcard/glob/splat expressions
  * for matching multiple files.)
  */
+
+// Dependencies like jQuery, or Angular are brought in here
 var wiredep = require('wiredep')({
   overrides: {
     bootstrap: {
       main: [
         'dist/css/bootstrap.css',
+        'dist/css/bootstrap-theme.css',
         'dist/js/bootstrap.js',
         'dist/fonts/glyphicons-halflings-regular.eot',
         'dist/fonts/glyphicons-halflings-regular.svg',

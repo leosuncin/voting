@@ -44,9 +44,8 @@ module.exports = function(grunt) {
       }
     },
     bower: {
-      files: ['bower.json'],
+      files: ['assets/vendor/**/*'],
       tasks: [
-        'bower:install',
         'copy:vendor',
         'sails-linker:devStyles',
         'sails-linker:devJs'

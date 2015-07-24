@@ -70,7 +70,8 @@ angular.module('voteApp')
     }
 
     function on (event, cb) {
-      io.socket.on(event, function(msg) {
+      io.socket.on(event, function() {
+        var msg = arguments
         $log.info(event, msg);
         $rootScope.$apply(function() {
           cb.apply(null, msg);

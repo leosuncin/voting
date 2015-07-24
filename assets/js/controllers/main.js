@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name githubApp.controller:MainCtrl
+ * @name voteApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the githubApp
+ * Controller of the voteApp
  */
-angular.module('githubApp')
+angular.module('voteApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

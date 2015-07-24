@@ -8,7 +8,7 @@
     "debug": "node debug app.js",
     "start": "node app.js",
     "postinstall": "bower install",
-    "postupdate": "bower update",
+    "postupdate": "bower update"
   },
   "main": "app.js",
   "repository": {

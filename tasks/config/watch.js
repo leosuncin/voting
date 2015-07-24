@@ -53,6 +53,12 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       }
+    },
+    jst: {
+      files: ['views/*.ejs'],
+      options: {
+        livereload: true
+      }
     }
   });
 

@@ -46,7 +46,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'PUT /post/:id/:action': {
-    controller: 'VoteController',
+    controller: 'PostController',
     action: 'vote'
   },
 };

@@ -1,4 +1,22 @@
 {
+  "name": "voting",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js",
+    "postinstall": "bower install",
+    "postupdate": "bower update",
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leosuncin/voting.git"
+  },
+  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
+  "license": "LPG",
   "dependencies": {
     "ejs": "~0.8.4",
     "include-all": "~0.1.3",
@@ -7,22 +25,6 @@
     "sails-disk": "~0.10.0",
     "sails-hook-autoreload": "^0.11.5"
   },
-  "name": "voting",
-  "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
-  "scripts": {
-    "debug": "node debug app.js",
-    "start": "node app.js"
-  },
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/leosuncin/voting.git"
-  },
-  "author": "Jaime Leonardo Suncin Cruz <jaime.suncin@kadevjo.com>",
-  "license": "LPG",
   "devDependencies": {
     "grunt": "0.4.2",
     "grunt-bower": "^0.20.0",

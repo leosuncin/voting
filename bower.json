@@ -1,4 +1,14 @@
 {
+  "name": "voting",
+  "version": "0.0.0",
+  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
+  "description": "Simple vote app",
+  "license": "GPL",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leosuncin/voting.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
@@ -6,9 +16,18 @@
     "test",
     "tests"
   ],
-  "dependencies": {},
-  "name": "voting",
-  "version": "0.0.0",
-  "author": "kadevjo",
-  "private": true
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.3",
+    "angular-animate": "~1.4.3",
+    "angular-resource": "~1.4.3",
+    "angular-sanitize": "~1.4.3",
+    "angular-touch": "~1.4.3",
+    "sails.io.js": "~0.11.5",
+    "angular-strap": "~2.3.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3",
+    "angular-scenario": "~1.4.3"
+  }
 }

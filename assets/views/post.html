@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-xs-12 col-md-12 col-lg-12">
+		<form name="post" ng-submit="createPost()">
+			<div class="form-group col-xs-12" ng-class="{'has-error': post.title.$invalid, 'has-success': post.title.$valid}">
+				<label for="title" class="control-label">Title</label>
+				<input type="text" class="form-control" name="title" ng-model="title" minlength="3" maxlength="16" required />
+				<span class="help-block" ng-show="title.$error.required">Required</span>
+				<span class="help-block" ng-show="title.$error.minlength">Too short</span>
+			</div>
+			<div class="form-group col-xs-12" ng-class="{'has-error': post.description.$invalid, 'has-success': post.description.$valid}">
+				<label for="description" class="control-label">Description</label>
+				<textarea rows="10" class="form-control" name="description" ng-model="description"></textarea>
+				<span class="help-block" ng-show="description.$error.minlength">Too short</span>
+			</div>
+			<div class="form-group col-xs-12">
+				<button type="submit" class="btn btn-primary">Publish</button>
+				<a href="/#/" class="btn btn-default">Back</a>
+			</div>
+		</form>
+	</div>
+</div>

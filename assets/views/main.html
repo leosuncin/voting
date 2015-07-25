@@ -1,23 +1,14 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="list-unstyled" ng-repeat="post in posts">
+			<li>
+				<h1>{{ post.title }} <small>publish {{ post.createdAt | timeago }}</small></h1>
+				<p ng-bind-html="post.description | nl2br"></p>
+				<span class="label" ng-class="{'label-info': post.total > 0, 'label-default': post.total == 0, 'label-warning': post.total < 0}">{{ post.total }} <i class="glyphicon glyphicon-fire"></i></span>
+				<span class="label label-success" ng-click="upVote(post)">{{ post.positive }} <i class="glyphicon glyphicon-thumbs-up"></i></span>
+				<span class="label label-danger" ng-click="downVote(post)">{{ post.negative }} <i class="glyphicon glyphicon-thumbs-down"></i></span>
+				<span class="text-muted">{{post.message}}</span>
+			</li>
+		</ul>
+	</div>
 </div>

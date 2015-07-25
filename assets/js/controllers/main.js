@@ -11,10 +11,13 @@ angular.module('voteApp')
   .controller('MainCtrl', [
     '$scope',
     '$sails',
+    '$routeParams',
+    '$location',
     '$log',
-    function($scope, $sails, $log) {
+    function($scope, $sails, $routeParams, $location, $log) {
       $scope.posts = [];
       $scope.limit = 12;
+      $scope.page = $routeParams.page || 1;
 
       function updatePost(id, cb) {
         $scope.posts.forEach(function(post) {
@@ -39,7 +42,7 @@ angular.module('voteApp')
         }
       }
 
-      function voteListener (data, post) {
+      function voteCallback (data, post) {
         if (data.update) {
           post.message = 'Thanks for your vote to ' + post.title;
         } else {
@@ -49,9 +52,14 @@ angular.module('voteApp')
 
       function init () {
         $sails.on('post', socketListener);
-        $sails.get('/post', {limit: $scope.limit, sort: {createdAt: -1}})
+        $sails.get('/post', {
+          limit: $scope.limit,
+          skip: $scope.limit * ($scope.page - 1),
+          sort: {createdAt: -1}
+        })
         .then(function(jwres) {
           $scope.posts = jwres.body;
+          $scope.noMore = $scope.posts.length < $scope.limit;
         }, function(jwresError) {
           $log.error(jwresError);
         });
@@ -60,7 +68,7 @@ angular.module('voteApp')
       function upVote (post) {
         $sails.put('/post/' + post.id + '/positive')
         .then(function(jwres) {
-          voteListener(jwres.body, post);
+          voteCallback(jwres.body, post);
         }, function(jwresError) {
           $log.error(jwresError);
         });
@@ -69,14 +77,35 @@ angular.module('voteApp')
       function downVote (post) {
         $sails.put('/post/' + post.id + '/negative')
         .then(function(jwres) {
-          voteListener(jwres.body, post);
+          voteCallback(jwres.body, post);
         }, function(jwresError) {
           $log.error(jwresError);
         });
+      }
+
+      function previous () {
+        $scope.page--;
+        $location.path('/' + $scope.page);
+      }
+
+      function next () {
+        $scope.page++;
+        $location.path('/' + $scope.page);
+      }
+
+      function getRange (n) {
+        var range = [];
+        for (var i = n <= 4 ? 1 : n - 4; i <= n; i++) {
+          range.push(i);
+        }
+        return range;
       }
 
       init();
 
       $scope.upVote = upVote;
       $scope.downVote = downVote;
+      $scope.previous = previous;
+      $scope.next = next;
+      $scope.getRange = getRange;
     }]);

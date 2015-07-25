@@ -1,7 +1,22 @@
 <div class="row">
 	<div class="col-xs-12">
 		<a href="/#/post" class="btn btn-lg btn-info pull-right"><i class="glyphicon glyphicon-plus"></i> Add new</a>
-		<ul class="list-unstyled" ng-repeat="post in posts">
+		<nav>
+			<ul class="pagination">
+				<li>
+					<a ng-click="previous()" aria-label="Previous" ng-show="page > 1">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li ng-repeat="i in getRange(page) track by $index" ng-class="{active: i == page}"><a href="/#/{{ i }}">{{ i }}</a></li>
+				<li>
+					<a ng-click="next()" aria-label="Next" ng-show="!noMore">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<ul class="list-unstyled" ng-repeat="post in posts | limitTo: limit">
 			<li>
 				<h1>{{ post.title }} <small>publish {{ post.createdAt | timeago }}</small></h1>
 				<p ng-bind-html="post.description | nl2br"></p>

@@ -63,4 +63,6 @@ module.exports = {
     url: process.env.REDISTOGO_URL || 'redis://localhost:6379/'
   },
 
+  hookTimeout: 240000
+
 };

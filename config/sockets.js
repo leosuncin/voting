@@ -136,6 +136,14 @@ module.exports.sockets = {
   * transport should be disabled.                                            *
   *                                                                          *
   ***************************************************************************/
-  // transports: ["polling", "websocket"]
+  transports: [
+    'websocket',
+    'htmlfile',
+    'polling',
+    'xhr-polling',
+    'jsonp-polling'
+  ],
+
+  origins: '*:*',
 
 };

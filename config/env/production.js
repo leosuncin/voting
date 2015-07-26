@@ -41,6 +41,26 @@ module.exports = {
   autoreload: {
     active: false,
     usePolling: false
-  }
+  },
+
+  /***************************************************************************
+   * Set the session connection in the production environment                *
+   * (see config/session.js)                                                 *
+   ***************************************************************************/
+
+  session: {
+    adapter: 'redis',
+    url: process.env.REDISTOGO_URL || 'redis://localhost:6379/'
+  },
+
+  /***************************************************************************
+   * Set the socket storage connection in the production environment         *
+   * (see config/sockets.js)                                                 *
+   ***************************************************************************/
+
+  sockets: {
+    adapter: 'socket.io-redis',
+    url: process.env.REDISTOGO_URL || 'redis://localhost:6379/'
+  },
 
 };

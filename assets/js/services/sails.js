@@ -11,9 +11,10 @@ angular.module('voteApp')
   .service('$sails', [
   '$rootScope',
   '$q',
+  'ENV',
   '$log',
-  function($rootScope, $q, $log) {
-    var baseUrl = location.origin || 'http://localhost:1337';
+  function($rootScope, $q, ENV, $log) {
+    var baseUrl = location.origin || ENV.baseUrl;
 
     function get (url, query) {
       url = baseUrl + url;
@@ -72,7 +73,7 @@ angular.module('voteApp')
     function on (event, cb) {
       io.socket.on(event, function() {
         var msg = arguments
-        $log.info(event, msg);
+        $log.debug(event, msg);
         $rootScope.$apply(function() {
           cb.apply(null, msg);
         });

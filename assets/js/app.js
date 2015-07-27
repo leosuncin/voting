@@ -14,11 +14,18 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'voteApp.config'
   ])
   .config([
     '$routeProvider',
-    function($routeProvider) {
+    'ENV',
+    '$compileProvider',
+    '$logProvider',
+    function($routeProvider,ENV , $compileProvider, $logProvider) {
+      $compileProvider.debugInfoEnabled(ENV.enviroment !== 'production');
+      $logProvider.debugEnabled(ENV.enviroment !== 'production');
+
       $routeProvider
         .when('/post', {
           templateUrl: 'views/post.html',

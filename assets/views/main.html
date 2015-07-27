@@ -16,7 +16,7 @@
 				</li>
 			</ul>
 		</nav>
-		<ul class="list-unstyled" ng-repeat="post in posts | limitTo: limit">
+		<ul class="list-unstyled" ng-repeat="post in posts track by post.id | limitTo: limit">
 			<li>
 				<h1>{{ post.title }} <small>publish {{ post.createdAt | timeago }}</small></h1>
 				<p ng-bind-html="post.description | nl2br"></p>

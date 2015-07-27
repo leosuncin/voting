@@ -69,6 +69,7 @@ www/
 node_modules
 bower_components
 assets/vendor
+assets/js/dependencies
 
 
 

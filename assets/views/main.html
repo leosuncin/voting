@@ -21,8 +21,8 @@
 				<h1>{{ post.title }} <small>publish {{ post.createdAt | timeago }}</small></h1>
 				<p ng-bind-html="post.description | nl2br"></p>
 				<span class="label" ng-class="{'label-info': post.total > 0, 'label-default': post.total == 0, 'label-warning': post.total < 0}">{{ post.total }} <i class="glyphicon glyphicon-fire"></i></span>
-				<span class="label label-success" ng-click="upVote(post)">{{ post.positive }} <i class="glyphicon glyphicon-thumbs-up"></i></span>
-				<span class="label label-danger" ng-click="downVote(post)">{{ post.negative }} <i class="glyphicon glyphicon-thumbs-down"></i></span>
+				<span class="label label-success" ng-click="vote(post, 'positive')">{{ post.positive }} <i class="glyphicon glyphicon-thumbs-up"></i></span>
+				<span class="label label-danger" ng-click="vote(post, 'negative')">{{ post.negative }} <i class="glyphicon glyphicon-thumbs-down"></i></span>
 				<span class="text-muted">{{post.message}}</span>
 			</li>
 		</ul>

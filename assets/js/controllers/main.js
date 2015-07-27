@@ -65,19 +65,14 @@ angular.module('voteApp')
         });
       }
 
-      function upVote (post) {
-        $sails.put('/post/' + post.id + '/positive')
+      function vote(post, action) {
+        $sails.put('/post/' + post.id + '/' + action)
         .then(function(jwres) {
-          voteCallback(jwres.body, post);
-        }, function(jwresError) {
-          $log.error(jwresError);
-        });
-      }
-
-      function downVote (post) {
-        $sails.put('/post/' + post.id + '/negative')
-        .then(function(jwres) {
-          voteCallback(jwres.body, post);
+          if (jwres.body.update) {
+            post.message = 'Thanks for your vote to ' + post.title;
+          } else {
+            post.message = 'You have already vote for ' + post.title;
+          }
         }, function(jwresError) {
           $log.error(jwresError);
         });
@@ -103,8 +98,7 @@ angular.module('voteApp')
 
       init();
 
-      $scope.upVote = upVote;
-      $scope.downVote = downVote;
+      $scope.vote = vote;
       $scope.previous = previous;
       $scope.next = next;
       $scope.getRange = getRange;

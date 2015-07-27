@@ -42,14 +42,6 @@ angular.module('voteApp')
         }
       }
 
-      function voteCallback (data, post) {
-        if (data.update) {
-          post.message = 'Thanks for your vote to ' + post.title;
-        } else {
-          post.message = 'You have already vote for ' + post.title;
-        }
-      }
-
       function init () {
         $sails.on('post', socketListener);
         $sails.get('/post', {
